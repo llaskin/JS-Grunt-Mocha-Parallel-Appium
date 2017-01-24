@@ -29,20 +29,30 @@ function setSauceEnv(){
 }
 
 function beforeEachExample() {
-    var browser = process.env.BROWSER,
-        version = process.env.VERSION,
-        platform = process.env.PLATFORM,
+	console.log("Test");
+		var browser = process.env.BROWSERNAME,
+		appiumVersion =  process.env.APPIUMVERSION,
+		deviceOrientation = process.env.DEVICEORIENTATION,
+		platformVersion = process.env.PLATFORMVERSION,
+		platformName = process.env.PLATFORMNAME,
+		deviceName = process.env.DEVICENAME,
+
+
+        
         server = "http://" + username + ":" + accessKey +
         "@ondemand.saucelabs.com:80/wd/hub";
-
     var desiredCaps = {
         'browserName': browser,
-        'platform': platform,
-        'version': version,
+        'appiumVersion': appiumVersion,
+        'deviceOrientation': deviceOrientation,
+        'platformVersion': platformVersion,
+        'platformName': platformName,
+        'deviceName': deviceName,        
         'username': username,
         'accessKey': accessKey,
         'name': this.currentTest.title
         };
+
     //check if buildTag is set if so add to desired caps.
     if (buildTag != undefined){
         desiredCaps['build'] = buildTag;
