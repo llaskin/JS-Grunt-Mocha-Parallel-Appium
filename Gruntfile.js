@@ -53,11 +53,12 @@ module.exports = function (grunt) {
     // load tasks
     grunt.loadNpmTasks('grunt-mocha-parallel');
     grunt.loadNpmTasks('grunt-parallel');
-    
+
     grunt.registerTask('Android', function(n) {
       grunt.option('browserName', 'Browser');
       grunt.option('appiumVersion', '1.5.3');
       grunt.option('deviceOrientation', 'portrait');
+      grunt.option('deviceName', 'Android Emulator');
       grunt.option('platformVersion', '5.1');
       grunt.option('platformName', 'Samsung Galaxy S4 Emulator');
     });
