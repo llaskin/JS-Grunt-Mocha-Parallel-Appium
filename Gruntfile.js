@@ -60,7 +60,7 @@ module.exports = function (grunt) {
       grunt.option('deviceOrientation', 'portrait');
       grunt.option('deviceName', 'Android Emulator');
       grunt.option('platformVersion', '5.1');
-      grunt.option('platformName', 'Samsung Galaxy S4 Emulator');
+      grunt.option('platformName', 'Android');
     });
 
     grunt.registerTask('Iphone', function(n) {

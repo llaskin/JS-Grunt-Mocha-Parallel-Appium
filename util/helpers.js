@@ -38,7 +38,7 @@ function beforeEachExample() {
 		deviceName = process.env.DEVICENAME,
 
 
-        
+
         server = "http://" + username + ":" + accessKey +
         "@ondemand.saucelabs.com:80/wd/hub";
     var desiredCaps = {
@@ -47,7 +47,7 @@ function beforeEachExample() {
         'deviceOrientation': deviceOrientation,
         'platformVersion': platformVersion,
         'platformName': platformName,
-        'deviceName': deviceName,        
+        'deviceName': deviceName,
         'username': username,
         'accessKey': accessKey,
         'name': this.currentTest.title
