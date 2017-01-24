@@ -41,11 +41,7 @@ module.exports = function (grunt) {
                 options: {
                     grunt: true
                 },
-//                 tasks: ['run_Android', 'run_Iphone']
-                tasks: ['run_Android']
-//                 tasks: ['run_windows10_edge', 'run_Windows7_ie_10',
-//                         'run_XP_firefox_37', 'run_Windows8_chrome_40',
-//                         'run_OSX10.10_safari_8']
+                tasks: ['run_Android', 'run_Iphone']
             }
         }
     });
