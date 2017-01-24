@@ -4,19 +4,19 @@ var path = require('path');
 
 module.exports = function (grunt) {
     // configure tasks
-    grunt.initConfig({        
+    grunt.initConfig({
         mocha_parallel: {
             options: {
                 args: function(suiteName) {
                     return [];
                 },
                 env: function(suiteName) {
-                    process.env.BROWSERNAME = grunt.option('browser');
-					process.env.APPIUMVERSION = grunt.option('appiumVersion');				    
+                    process.env.BROWSERNAME = grunt.option('browserName');
+					process.env.APPIUMVERSION = grunt.option('appiumVersion');
 					process.env.DEVICEORIENTATION = grunt.option('deviceOrientation');
 					process.env.PLATFORMVERSION = grunt.option('platformVersion');
-					process.env.PLATFORMNAME = grunt.option('platformName');					
-					process.env.DEVICENAME = grunt.option('deviceName');					
+					process.env.PLATFORMNAME = grunt.option('platformName');
+					process.env.DEVICENAME = grunt.option('deviceName');
 
                     return process.env;
                 },
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 concurrency: os.cpus().length * 1.5
             }
         },
-        
+
         parallel: {
             assets: {
                 options: {
