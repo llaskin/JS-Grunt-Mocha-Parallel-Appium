@@ -11,9 +11,13 @@ module.exports = function (grunt) {
                     return [];
                 },
                 env: function(suiteName) {
-                    process.env.BROWSER = grunt.option('browser');
-                    process.env.VERSION = grunt.option('version');
-                    process.env.PLATFORM = grunt.option('platform');
+                    process.env.BROWSERNAME = grunt.option('browser');
+					process.env.APPIUMVERSION = grunt.option('appiumVersion');				    
+					process.env.DEVICEORIENTATION = grunt.option('deviceOrientation');
+					process.env.PLATFORMVERSION = grunt.option('platformVersion');
+					process.env.PLATFORMNAME = grunt.option('platformName');					
+					process.env.DEVICENAME = grunt.option('deviceName');					
+
                     return process.env;
                 },
                 report: function(suite, code, stdout, stderr) {
@@ -37,9 +41,11 @@ module.exports = function (grunt) {
                 options: {
                     grunt: true
                 },
-                tasks: ['run_windows10_edge', 'run_Windows7_ie_10',
-                        'run_XP_firefox_37', 'run_Windows8_chrome_40',
-                        'run_OSX10.10_safari_8']
+//                 tasks: ['run_Android', 'run_Iphone']
+                tasks: ['run_Android']
+//                 tasks: ['run_windows10_edge', 'run_Windows7_ie_10',
+//                         'run_XP_firefox_37', 'run_Windows8_chrome_40',
+//                         'run_OSX10.10_safari_8']
             }
         }
     });
@@ -48,43 +54,26 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mocha-parallel');
     grunt.loadNpmTasks('grunt-parallel');
     
-    grunt.registerTask('Windows10_edge', function(n) {
-      grunt.option('browser', 'microsoftedge');
-      grunt.option('version', '20.10240');
-      grunt.option('platform', "Windows 10");
-    });
-    
-    grunt.registerTask('Windows7_ie_10', function(n) {
-      grunt.option('browser', 'internet explorer');
-      grunt.option('version', '10');
-      grunt.option('platform', "Windows 7");
+    grunt.registerTask('Android', function(n) {
+      grunt.option('browserName', 'Browser');
+      grunt.option('appiumVersion', '1.5.3');
+      grunt.option('deviceOrientation', 'portrait');
+      grunt.option('platformVersion', '5.1');
+      grunt.option('platformName', 'Samsung Galaxy S4 Emulator');
     });
 
-    grunt.registerTask('XP_firefox_37', function(n) {
-      grunt.option('browser', 'firefox');
-      grunt.option('version', 37);
-      grunt.option('platform', "XP");
+    grunt.registerTask('Iphone', function(n) {
+      grunt.option('browserName', 'Safari');
+      grunt.option('appiumVersion', '1.6.3');
+      grunt.option('deviceOrientation', 'portrait');
+      grunt.option('platformVersion', '10.0');
+      grunt.option('platformName', 'iOS');
+      grunt.option('deviceName', 'iPhone Simulator');
     });
 
-    grunt.registerTask('Windows8_chrome_40', function(n) {
-      grunt.option('browser', 'chrome');
-      grunt.option('version', 40);
-      grunt.option('platform', "Windows 8");
-    });
-
-    grunt.registerTask('OSX10.10_safari_8', function(n) {
-      grunt.option('browser', 'safari');
-      grunt.option('version', 8);
-      grunt.option('platform', "OS X 10.10");
-    });
-    
     // register tasks
     grunt.registerTask('default', ['parallel']);
-
-    grunt.registerTask('run_windows10_edge', ['Windows10_edge', 'mocha_parallel']);
-    grunt.registerTask('run_Windows7_ie_10', ['Windows7_ie_10', 'mocha_parallel']);
-    grunt.registerTask('run_XP_firefox_37', ['XP_firefox_37', 'mocha_parallel']);
-    grunt.registerTask('run_Windows8_chrome_40', ['Windows8_chrome_40', 'mocha_parallel']);
-    grunt.registerTask('run_OSX10.10_safari_8', ['OSX10.10_safari_8', 'mocha_parallel']);
+    grunt.registerTask('run_Iphone', ['Iphone', 'mocha_parallel']);
+    grunt.registerTask('run_Android', ['Android', 'mocha_parallel']);
 };
 
